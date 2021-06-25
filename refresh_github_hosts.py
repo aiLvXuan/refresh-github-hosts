@@ -60,7 +60,7 @@ class refesh_github_hosts:
                 break
         if remote_update_time == '':
             return True
-        print('Update time:', loc_update_time)
+        print('Update time:', remote_update_time)
         return remote_update_time > loc_update_time
 
     def handler(self, loc_hosts: str, github_hosts: str) -> str:
