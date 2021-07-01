@@ -16,11 +16,20 @@ def is_admin():
 class refesh_github_hosts:
 
     def get_hosts(self) -> str:
+        url = 'https://raw.fastgit.org/521xueweihan/GitHub520/main/hosts'
         try:
-            response = urlopen("https://raw.fastgit.org/521xueweihan/GitHub520/main/hosts")
+            response = urlopen(url)
             return response.read().decode('utf-8')
-        except:
-            return ''
+        except BaseException:
+            print('无法访问：' + url)
+            url = 'https://github.com/521xueweihan/GitHub520/blob/main/hosts'
+            try:
+                print('正在请求：' + url)
+                response = urlopen(url)
+                return response.read().decode('utf-8')
+            except BaseException:
+                print('无法访问：' + url)
+                return ''
 
     def input_hosts_path(self) -> str:
         host_path = os.path.join('C:/Windows/System32/drivers/etc/hosts')
